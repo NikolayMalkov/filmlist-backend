@@ -6,16 +6,6 @@ const cors = require('cors');
 
 const app = express()
 
-// Корс обоссаный
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
-// Хрень чтобы распарсить в жсон
-app.use(express.json())
-app.use('/', routes)
-app.use('/films', routes)
 
 const PORT = config.get('port') || 5000
 
@@ -32,5 +22,16 @@ async function start() {
     }
 }
 start();
+
+// Корс обоссаный
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+// Хрень чтобы распарсить в жсон
+app.use(express.json())
+app.use('/', routes)
+app.use('/films', routes)
 
 app.listen(PORT, () => console.log(`server has been started on ${PORT}`))

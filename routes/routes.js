@@ -12,7 +12,7 @@ router.post('/films', function(req, res) {
 })
 
 // Обновление записи
-router.put(`/films/:id`, function(req, res) {
+router.put(`/films/:id`, function(req, res, next) {
     const {title} = req.body
     const id = req.params.id
     Film.findByIdAndUpdate(id, {$set: { title: title }}, { new: true }, function(err, update){
@@ -21,12 +21,12 @@ router.put(`/films/:id`, function(req, res) {
 })
 
 // get first page
-router.get('/', function(req, res) {
+router.get('/', function(req, res, next) {
     res.send('start page');
 })
 
 //get all films
-router.get('/films', function(req, res) {
+router.get('/films', function(req, res, next) {
     Film.find((err, item) => {
         if (err) {
             res.send({message: 'error'})
@@ -37,13 +37,13 @@ router.get('/films', function(req, res) {
     })
 });
 //gte one film by id
-router.get(`/films/:id`, function(req, res) {
+router.get(`/films/:id`, function(req, res , next) {
     const id = req.params.id
     Film.findById(id, function(err, item) {
         res.send(item)
     })
 })
-router.delete(`/films/:id`, function(req, res){
+router.delete(`/films/:id`, function(req, res , next){
     const id = req.params.id
     Film.findByIdAndDelete(id, function(err, item){
         return res.status(200).json({message: 'deleted'})
