@@ -7,7 +7,8 @@ const cors = require('cors');
 const app = express()
 
 // Корс обоссаный
-app.use(cors());app.options('*', cors());
+app.use(cors());
+// app.options('*', cors());
 // Хрень чтобы распарсить в жсон
 app.use(express.json())
 app.use('/', routes)
