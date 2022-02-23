@@ -8,15 +8,13 @@ const pool = new Pool({
   port: 5432,
 });
 
-const getFilms = () => {
-    return new Promise(function(resolve, reject) {
-      pool.query('SELECT * FROM films_completed', (error, results) => {
+const getFilms = (request, response) => {
+    pool.query('SELECT * FROM films_completed', (error, results) => {
         if (error) {
-          reject(error)
+          throw error
         }
         response.status(200).json(results.rows)
       })
-    }) 
   }
   const createFilm = (body) => {
     return new Promise(function(resolve, reject) {
