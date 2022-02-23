@@ -21,15 +21,7 @@ app.use(function(req, res, next) {
 app.use(express.json())
 
 // Получить список фильмов
-app.get('/', (req, res) => {
-    Film.getFilms()
-    .then(response => {
-      res.status(200).send(response);
-    })
-    .catch(error => {
-      res.status(500).send(error);
-    })
-  })
+  app.get('/', Film.getFilms)
   
   app.post('/films', (req, res) => {
     Film.createFilm(req.body)
