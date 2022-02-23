@@ -10,7 +10,7 @@ const pool = new Pool({
 
 const getFilms = () => {
     return new Promise(function(resolve, reject) {
-      pool.query('SELECT * FROM films', (error, results) => {
+      pool.query('SELECT * FROM films_completed', (error, results) => {
         if (error) {
           reject(error)
         }
@@ -21,7 +21,7 @@ const getFilms = () => {
   const createFilm = (body) => {
     return new Promise(function(resolve, reject) {
       const { title } = body
-      pool.query('INSERT INTO films (title) VALUES ($1) RETURNING *', [title], (error, results) => {
+      pool.query('INSERT INTO films_completed (title) VALUES ($1) RETURNING *', [title], (error, results) => {
         if (error) {
           reject(error)
         }
@@ -32,7 +32,7 @@ const getFilms = () => {
   const deleteFilm = () => {
     return new Promise(function(resolve, reject) {
       const id = parseInt(request.params.id)
-      pool.query('DELETE FROM films WHERE id = $1', [id], (error, results) => {
+      pool.query('DELETE FROM films_completed WHERE id = $1', [id], (error, results) => {
         if (error) {
           reject(error)
         }
