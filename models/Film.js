@@ -2,7 +2,7 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
   user: 'sysdba',
-  host: '192.168.0.111',
+  host: 'localhost',
   database: 'films',
   password: 'root',
   port: 5432,
