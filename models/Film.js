@@ -14,7 +14,7 @@ const getFilms = () => {
         if (error) {
           reject(error)
         }
-        resolve(results.rows);
+        response.status(200).json(results.rows)
       })
     }) 
   }
