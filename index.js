@@ -1,5 +1,6 @@
 const express = require('express');
 const config = require('config');
+const Film = require('./models/Film')
 // const routes = require('./routes/routes');
 // const cors = require('cors');
 
