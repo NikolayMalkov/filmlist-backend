@@ -11,7 +11,7 @@ const pool = new Pool({
 const getFilms = (request, response) => {
     pool.query('SELECT * FROM films_completed', (error, results) => {
         if (error) {
-          throw error
+          console.log(error)
         }
         response.status(200).json(results.rows)
       })
