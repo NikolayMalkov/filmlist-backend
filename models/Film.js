@@ -13,8 +13,8 @@ const getFilms = (request, response) => {
         if (error) {
           console.log(error)
         }
-        // response.status(200).json(results.rows)
-        console.log(results)
+        response.status(200).json(results.rows)
+        // console.log(results)
       })
   }
   const createFilm = (body) => {
