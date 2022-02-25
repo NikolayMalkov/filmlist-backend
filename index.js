@@ -6,9 +6,7 @@ const Film = require('./models/Film')
 
 const app = express()
 
-
 const PORT = config.get('port') || 5000
-
 
 // Корс обоссаный
 app.use(function(req, res, next) {
@@ -20,29 +18,11 @@ app.use(function(req, res, next) {
 // Хрень чтобы распарсить в жсон
 app.use(express.json())
 
-// Получить список фильмов
-  app.get('/', Film.getFilms)
-  
-  app.post('/films', (req, res) => {
-    Film.createFilm(req.body)
-    .then(response => {
-      res.status(200).send(response);
-    })
-    .catch(error => {
-      res.status(500).send(error);
-    })
-  })
-  
-  app.delete('/films/:id', (req, res) => {
-    Film.deleteFilm(req.params.id)
-    .then(response => {
-      res.status(200).send(response);
-    })
-    .catch(error => {
-      res.status(500).send(error);
-    })
-  })
-
-
+// обработчики
+  app.get('/films', Film.getFilms)
+  app.get('/films/:id', Film.getFilmById)
+  app.post('/films', Film.createFilm)
+  app.delete('/films/:id', Film.deleteFilm)
+  app.put('/films/:id', Film.updateFilm)
 
 app.listen(PORT, () => console.log(`server has been started on ${PORT}`))
