@@ -5,7 +5,7 @@ const pool = new Pool({
   host: 'mir.zapto.org',
   database: 'films',
   password: 'root',
-  port: 60131,
+  port: 60121,
 });
 
   const getFilms = (request, response) => {
