@@ -1,11 +1,11 @@
 
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: 'sysdba',
-  host: '192.168.43.111',
+  user: 'postgres',
+  host: 'mir.zapto.org',
   database: 'films',
   password: 'root',
-  port: 5432,
+  port: 60131,
 });
 
   const getFilms = (request, response) => {
